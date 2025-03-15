@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_excel("output_p3b.xlsx")
+df = pd.read_excel("output_fz.xlsx")
 
 # Group by education_level and calculate the mean amp_diff
 grouped_df = df.groupby("Highest_Adult_Edu", as_index=False)["amp_diff"].mean()

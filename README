@@ -1,0 +1,43 @@
+The dataset consists of recordings from over 100 subjects, each stored in individual directories. For each task that a subject participated in, the directory contains the following files:
+.eeg file – Stores the raw EEG recordings.
+.vhdr file – Contains metadata and configuration details related to the EEG recording.
+.vmrk file – Lists the marked events that occurred during the recording session.
+These files together provide a structured representation of the EEG data and event markers for each subject.
+
+To efficiently manage and process EEG records, we used Object-Oriented Programming (OOP). Since we are working with a large number of data units (EEG records), each requiring complex processing, OOP allows us to encapsulate all operations related to a single record within an instance of the EegRecordSubject class. This way, each EEG record is responsible for its own data processing, making the code more modular and maintainable.
+
+The EegRecordSubject class is designed to handle a single EEG recording. Its constructor (__init__ method) takes the .vhdr file path as input and uses the MNE library to load the data:
+
+mne.io.read_raw_brainvision() – Reads the raw EEG data from the BrainVision file format.
+mne.events_from_annotations() – Extracts event markers from the file.
+These are stored as instance attributes, allowing us to build additional methods like display() for visualization and more advanced processing methods for extracting relevant features from the EEG data.
+
+
+In the research, EEG recordings included both frequent and rare events. The goal was to measure the difference between the mean amplitude of the EEG signal during a specific time window for rare events compared to frequent events.
+
+After several attempts, we developed the find_amp_diff_2() method—a generic function that extracts this difference efficiently. The method follows these steps:
+
+Create an Epochs object – Using MNE, we extract segments of EEG data (epochs) around each marked event.
+Separate epochs into two groups – One for rare events and another for frequent events.
+Compute the mean amplitude – We calculate the average absolute amplitude within the given time window for each group.
+Return the difference – The function outputs the difference between the mean amplitudes of the two groups.
+To keep the method flexible and applicable to different EEG recordings and research tasks, we allow the following parameters to be specified:
+Chosen EEG channels to analyze.
+Time window for measuring the amplitude.
+Event types that should be considered as rare events.
+
+This design ensures that the function can be adapted for various datasets, making it a useful tool for EEG analysis across different subjects and experiments.
+
+
+Once each EEG record could be processed individually using EegRecordSubject, we developed the get_amp_diff_data() function to handle the entire dataset.
+
+This function automates the process of searching the dataset for all .vhdr files that match a specific task. For each valid file, it attempts to create an instance of EegRecordSubject to extract EEG data. Using the class’s method, it processes the data we need.
+
+Each subject's EEG data is then linked with their corresponding demographic information (gender, age, education, household income, etc.) from a pre-existing dataset. The function outputs a list of Participant objects, each holding EEG-derived features (e.g., amplitude difference), demographic information, and other relevant study parameters.
+This structured approach allows for efficient data extraction and organization, making it easy to analyze EEG patterns across different participants.
+
+
+After collecting the processed participant data, we used Pandas to convert the list of Participant objects into a structured DataFrame. This allowed us to efficiently store all the extracted information in an Excel file for further analysis.
+
+At this stage, with the data organized in a DataFrame, we could write simple scripts using Pandas to analyze various parameters. By leveraging Pandas’ built-in functions, we explored potential connections between amplitude differences and other participant attributes, such as education level, age, or household income.
+This approach made it easy to visualize trends, compute statistics, and generate insights about the relationship between cognitive responses (EEG signals) and demographic factors.
