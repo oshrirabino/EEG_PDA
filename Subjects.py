@@ -115,7 +115,7 @@ class EegRecordSubject:
             other_events.append(other_pz)
         return np.mean(special_events) - np.mean(other_events)
     
-    def find_amp_diff_2(self, channels, rare_events, tmin: int, tmax: int):
+    def find_amp_diff_2(self, channels, rare_events, tmin: float, tmax: float):
         """
         Computes the difference in mean amplitude between "rare" event epochs 
         and all other epochs within a specified time window.
@@ -156,7 +156,7 @@ class EegRecordSubject:
         freq_epochs = epochs[~mask_rare]  # Contains all other epochs
 
         # Convert time window to sample indices
-        time_range = (tmin, tmax) 
+        time_range = (tmin, tmax)
         sfreq = epochs.info["sfreq"]
         tmin_idx = int((time_range[0] - epochs.times[0]) * sfreq)
         tmax_idx = int((time_range[1] - epochs.times[0]) * sfreq)
