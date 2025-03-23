@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 path = "rodata"
 
-participants = af.get_amp_diff_data_VS(path, ["Fz", "F3", "F4", "FC1", "FC2", "C3", "C4"], [201, 202], 0.3, 0.6)
+participants = af.get_amp_diff_data_VS(path, ["Fz", "F3", "F4", "FC1", "FC2", "C3", "C4"], [201, 202], 0.125, 0.225)
 
 data = {
     'Gender': [p.gender for p in participants],
