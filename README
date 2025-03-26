@@ -1,3 +1,5 @@
+This project analyzes EEG data collected from multiple participants during cognitive tasks. The dataset consists of over 100 subjects, each with EEG recordings for different tasks, including visual oddball and visual search. Each subject's data includes three key files: an .eeg file (containing raw EEG signals), a .vhdr file (storing metadata and recording parameters), and a .vmrk file (listing event markers). Our goal is to extract meaningful insights by processing these EEG recordings, measuring amplitude differences in response to specific event types, and correlating the results with participant demographics. By applying object-oriented programming, data processing techniques, and statistical analysis, we aim to uncover patterns related to cognitive processing and individual differences
+
 The dataset consists of recordings from over 100 subjects, each stored in individual directories. For each task that a subject participated in, the directory contains the following files:
 .eeg file – Stores the raw EEG recordings.
 .vhdr file – Contains metadata and configuration details related to the EEG recording.
