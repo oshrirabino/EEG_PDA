@@ -3,7 +3,12 @@ import pandas as pd
 from Subjects import Participant
 import matplotlib.pyplot as plt
 
-path = "rodata"
+"""
+Script that create data for specific task and store it in excel file.
+ It get all participants objects using "get_amp_diff_data_VS" and store the data
+"""
+
+path = r"src\rodata"
 
 participants = af.get_amp_diff_data(path, ["Pz", "P3", "P4"], [201, 202], 0.3, 0.6)
 

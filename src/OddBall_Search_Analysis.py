@@ -2,6 +2,10 @@ import amp_funcs as af
 import pandas as pd
 from Subjects import Participant
 import matplotlib.pyplot as plt
+"""
+Script that create data for specific task and store it in excel file.
+ It get all participants objects using "get_amp_diff_data_VS" and store the data
+"""
 
 path = r"src\rodata"
 
