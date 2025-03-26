@@ -1,9 +1,13 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath("C:\PyhtonDAP\src"))  # Add src/ to Python's module search path
+
 from Subjects import EegRecordSubject
 import pandas as pd
 import numpy as np 
 import mne
 
-file_path = "rodata\sub-001\eeg\sub-001_task-visualoddball_eeg.vhdr"
+file_path = r"src\rodata\sub-001\eeg\sub-001_task-visualoddball_eeg.vhdr"
 
 eeg_r = EegRecordSubject(file_path)
 epochs = mne.Epochs(eeg_r.raw, events = eeg_r.events, event_id = eeg_r.event_id,

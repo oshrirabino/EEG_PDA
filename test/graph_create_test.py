@@ -1,9 +1,13 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath("C:\PyhtonDAP\src"))  # Add src/ to Python's module search path
+
 import amp_funcs as af
 import pandas as pd
 import matplotlib.pyplot as plt
 
 
-path = "rodata"
+path = r"src\rodata"
 
 participants = af.get_amp_diff_data(path, ["Pz", "P3", "P4"], [201, 202], 0.3, 0.6, max_files=10)
 

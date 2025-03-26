@@ -3,7 +3,7 @@ import pandas as pd
 from Subjects import Participant
 import matplotlib.pyplot as plt
 
-path = "rodata"
+path = r"src\rodata"
 
 participants = af.get_amp_diff_data_VS(path, ["Fz", "F3", "F4", "FC1", "FC2", "C3", "C4"], [201, 202], 0.125, 0.225)
 

@@ -4,7 +4,7 @@ from Subjects import EegRecordSubject
 from Subjects import Participant
 
 def get_amp_diff_data(path: str, channels, events_to_check, tmin: float, tmax: float, max_files = 0):
-    df = pd.read_excel("participants.xlsx")
+    df = pd.read_excel("src\participants.xlsx")
     if max_files == 0:
         max_files = len(df)
     participants = []
@@ -29,7 +29,7 @@ def get_amp_diff_data(path: str, channels, events_to_check, tmin: float, tmax: f
     return participants
 
 def get_amp_diff_data_VS(path: str, channels, events_to_check, tmin: int, tmax: int, max_files = 0):
-    df = pd.read_excel("participants.xlsx")
+    df = pd.read_excel("src\participants.xlsx")
     if max_files == 0:
         max_files = len(df)
     participants = []
